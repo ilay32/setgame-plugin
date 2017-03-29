@@ -1,0 +1,19 @@
+description: SetGame plug-in.
+category: "Visual stimuli"
+date: "2017"
+controls:
+-
+    type: combobox
+    var: mode
+    label: Select Mode
+    options:
+    - time constrained
+    - practice
+    name: combobox_widget
+-
+    label: Duration
+    name: line_edit_duration
+    info: A value in milliseconds, 'sound', 'mouseclick', or 'keypress'
+    type: line_edit
+    var: duration
+    validator: duration   
