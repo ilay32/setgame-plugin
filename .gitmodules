@@ -1,3 +1,4 @@
 [submodule "setgame"]
 	path = setgame
-	url = ./setgame
+	url = https://github.com/ilay32/setgame.git
+    branch = opensesame_plugin
