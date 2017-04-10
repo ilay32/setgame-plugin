@@ -7,7 +7,7 @@ controls:
     var: mode
     label: Select Mode
     options:
-    - time constrained
+    - play
     - practice
     name: combobox_widget
 -
@@ -17,3 +17,4 @@ controls:
     type: line_edit
     var: duration
     validator: duration   
+
