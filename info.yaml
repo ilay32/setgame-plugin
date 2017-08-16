@@ -16,5 +16,10 @@ controls:
     info: A value in milliseconds, 'sound', 'mouseclick', or 'keypress'
     type: line_edit
     var: duration
-    validator: duration   
-
+    validator: duration
+- 
+    label: Show Timer
+    name: show_timer_checkbox
+    info: Check or uncheck to show or hide the game countdown
+    type: checkbox
+    var: show_timer
