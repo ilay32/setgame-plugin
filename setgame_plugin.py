@@ -43,6 +43,8 @@ class setgame_plugin(item):
             pr = runner.feedback_screen(gameresults,self.experiment.var.personal_record)
             self.experiment.var.set('personal_record',pr)
             self.set_vars(gameresults)
+        else:
+            self.experiment.pause()
 
     def set_vars(self,data):
         for k,v in data.iteritems():
