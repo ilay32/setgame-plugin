@@ -18,7 +18,6 @@ class setgame_plugin(item):
         self.var.show_timer = "yes"
 
     def prepare(self):
-        self.experiment.var.personal_record = 0
         item.prepare(self)
         self.c = canvas(self.experiment)
         #ordm = setgame_plugin.ordpat.match(self.name)
@@ -40,18 +39,15 @@ class setgame_plugin(item):
 
         gameresults = runner.run()()
         if gameresults != "keyboard interrupt":
-            pr = runner.feedback_screen(gameresults,self.experiment.var.personal_record)
+            cr = self.experiment.var.personal_record if 'personal_record' in self.experiment.var.vars() else 0
+            pr = runner.feedback_screen(gameresults,cr)
             self.experiment.var.set('personal_record',pr)
-            self.set_vars(gameresults)
+            for k,v in gameresults.iteritems():
+                self.experiment.var.set(k,v)
         else:
             self.experiment.pause()
 
-    def set_vars(self,data):
-        for k,v in data.iteritems():
-            self.experiment.var.set(k,v)
-            if k == 'score' and v > self.experiment.var.personal_record:
-                self.experiment.var.personal_record = v
-
+        
             
 class qtsetgame_plugin(setgame_plugin, qtautoplugin):
     def __init__(self, name, experiment, script=None):
