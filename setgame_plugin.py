@@ -16,6 +16,7 @@ class setgame_plugin(item):
         self.var.mode = "play"
         self.var.lang = "he" #one may add a language option in the gui and...
         self.var.show_timer = "yes"
+        self.var.show_feedbacks = "yes"
 
     def prepare(self):
         item.prepare(self)
@@ -36,12 +37,12 @@ class setgame_plugin(item):
             fullscreen = self.fullscreen, \
             show_timer = self.var.show_timer
         )
-
         gameresults = runner.run()()
         if gameresults != "keyboard interrupt":
             cr = self.experiment.var.personal_record if 'personal_record' in self.experiment.var.vars() else 0
-            pr = runner.feedback_screen(gameresults,cr)
-            self.experiment.var.set('personal_record',pr)
+            if self.var.show_feedbacks == 'yes':
+                pr = runner.feedback_screen(gameresults,cr)
+                self.experiment.var.set('personal_record',pr)
             for k,v in gameresults.iteritems():
                 self.experiment.var.set(k,v)
         else:

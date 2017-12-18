@@ -23,3 +23,9 @@ controls:
     info: Check or uncheck to show or hide the game countdown
     type: checkbox
     var: show_timer
+
+- label: Show Feedbacks
+  name: show_feedbacks_checkbox
+  info: Check or uncheck to include or omit the feedback screen at game end
+  type: checkbox
+  var: show_feedbacks
